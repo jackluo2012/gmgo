@@ -234,11 +234,11 @@ func (s *DbSession) ReadFile(id, prefix string, file *File) error {
 	if err != nil {
 		return err
 	}
-	n := file.ByteLength
+	n := f.Size()
 	if n == 0 {
 		n = 8192
 	}
-	b := make([]byte, file.ByteLength)
+	b := make([]byte, n)
 	_, err = f.Read(b)
 
 	err = f.Close()
