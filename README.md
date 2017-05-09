@@ -69,6 +69,9 @@ func findAllUsers() {
 
 func setupUserDB() {
     if userDbErr := gmgo.Setup(gmgo.DbConfig{"localhost:27017", "userdb", "", ""}); userDbErr != nil {
+        
+    //如果 你要带上验证的一定用下面的
+    //if userDbErr := gmgo.DbConfig{HostURL:"localhost:27017",Hosts:[]string{"localhost"}, DBName: "mdb", UserName: "user", Password: "pass", Mode: 1}; userDbErr != nil {
     		log.Fatalf("Database connection error : %s.\n", userDbErr)
     		return
     }

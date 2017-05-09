@@ -279,6 +279,8 @@ func Setup(dbConfig DbConfig) error {
 			Database: dbConfig.DBName,
 			Username: dbConfig.UserName,
 			Password: dbConfig.Password,
+			Source:    "admin",
+			PoolLimit: 4096, // Session.SetPoolLimit
 		}
 		session, err = mgo.DialWithInfo(mongoDBDialInfo)
 	} else {
